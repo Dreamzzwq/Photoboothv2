@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Photobooth — Rizky</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Photobooth — Life4Cuts</h1>
+      <p class="sub">Ambil 4 foto, tambahkan frame & stiker, unduh strip foto</p>
+    </header>
+
+    <main>
+      <section class="left">
+        <div class="camera-card">
+          <div class="video-wrap">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="captureOverlay" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="controls-row">
+            <select id="filterSelect" title="Pilih filter">
+              <option value="none">None</option>
+              <option value="grayscale(100%)">Grayscale</option>
+              <option value="sepia(60%)">Sepia</option>
+              <option value="contrast(110%) saturate(110%)">Vintage</option>
+              <option value="brightness(110%)">Bright</option>
+            </select>
+
+            <button id="startBtn" class="btn primary">Mulai (4 foto)</button>
+            <button id="retakeBtn" class="btn" disabled>Reset</button>
+          </div>
+
+          <div class="uploader-row">
+            <label class="uploader">
+              Tambah Frame (PNG)
+              <input type="file" id="frameInput" accept="image/png" />
+            </label>
+
+            <label class="uploader">
+              Tambah Sticker (PNG)
+              <input type="file" id="stickerInput" accept="image/png" />
+            </label>
+
+            <button id="clearOverlays" class="btn">Hapus Overlay</button>
+          </div>
+
+          <div class="timer" id="timer">—</div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="preview-card">
+          <h3>Pratinjau Strip</h3>
+          <div id="stripPreviewWrap">
+            <!-- preview canvas akan dibangkitkan di sini -->
+            <canvas id="stripPreview" width="900" height="1200*4" style="display:block;"></canvas>
+          </div>
+
+          <div class="actions">
+            <button id="downloadBtn" class="btn primary" disabled>Unduh Strip</button>
+            <button id="shareQRBtn" class="btn" disabled>Generate QR</button>
+            <a id="downloadLink" style="display:none"></a>
+          </div>
+
+          <div id="qrContainer"></div>
+        </div>
+
+        <div class="thumbs-card">
+          <h4>Hasil (4 foto)</h4>
+          <div id="thumbs" class="thumbs-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>Photobooth sederhana — dibuat meniru fitur BeautyPlus Photo Booth</small>
+    </footer>
+  </div>
+
+  <!-- QR lib -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
