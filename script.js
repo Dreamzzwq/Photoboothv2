@@ -1,6 +1,3 @@
-// script.js
-// Photobooth: capture 4 photos with timer, apply filter, overlay frame/sticker, make strip & download + QR
-
 const video = document.getElementById('video');
 const startBtn = document.getElementById('startBtn');
 const retakeBtn = document.getElementById('retakeBtn');
@@ -304,3 +301,4 @@ window.addEventListener('beforeunload', () => {
     stream.getTracks().forEach(t => t.stop());
   }
 });
+
